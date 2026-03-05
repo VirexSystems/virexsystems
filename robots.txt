@@ -1,4 +1,0 @@
-User-agent: *
-Disallow: /portal/
-Disallow: /root_authority/
-Disallow: /helios_archive/
