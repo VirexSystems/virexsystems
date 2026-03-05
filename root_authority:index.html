@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ROOT AUTHORITY</title>
+
+<style>
+body{
+    margin:0;
+    background:black;
+    color:#00ff9c;
+    font-family:monospace;
+    overflow:hidden;
+}
+
+/* Background grid */
+.grid{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background-image:
+    linear-gradient(rgba(0,255,156,0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,156,0.1) 1px, transparent 1px);
+    background-size:50px 50px;
+    animation: drift 20s linear infinite;
+}
+
+@keyframes drift{
+    from {transform:translateY(0);}
+    to {transform:translateY(50px);}
+}
+
+/* Center console */
+.console{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    text-align:center;
+}
+
+/* Glitch text */
+.glitch{
+    font-size:40px;
+    letter-spacing:3px;
+    animation: flicker 2s infinite;
+}
+
+@keyframes flicker{
+    0%{opacity:1;}
+    50%{opacity:0.4;}
+    100%{opacity:1;}
+}
+
+/* Log feed */
+.log{
+    margin-top:40px;
+    text-align:left;
+    width:500px;
+    height:200px;
+    overflow:hidden;
+    border:1px solid #00ff9c;
+    padding:15px;
+}
+
+/* Random static flicker */
+.static{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:url("https://upload.wikimedia.org/wikipedia/commons/2/2c/TV_static.gif");
+    opacity:0.03;
+    pointer-events:none;
+}
+
+/* Hidden message */
+.hidden{
+    position:absolute;
+    bottom:10px;
+    right:10px;
+    font-size:10px;
+    opacity:0.2;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="grid"></div>
+<div class="static"></div>
+
+<div class="console">
+
+<div class="glitch">
+ROOT AUTHORITY
+</div>
+
+<div style="margin-top:10px">
+SYSTEM CONTROL NODE ACTIVE
+</div>
+
+<div class="log" id="log"></div>
+
+</div>
+
+<div class="hidden">
+ASH-LAYER ACTIVE
+</div>
+
+<script>
+
+let logs = [
+"AUTHORIZATION: DELTA-7 CONFIRMED",
+"GLOBAL NODE ACCESS: ENABLED",
+"STABILIZATION PROTOCOL RUNNING",
+"POPULATION MONITORING ONLINE",
+"ANOMALY DETECTED: FIELD DRIFT",
+"INITIATING ASH CORRECTION",
+"RESTRUCTURING BIOSPHERE PARAMETERS",
+"WARNING: CIVILIAN NETWORK ACCESS DETECTED",
+"TRACE ATTEMPT FAILED",
+"RETURNING TO PASSIVE OBSERVATION"
+];
+
+let logIndex = 0;
+
+function addLog(){
+    let logBox = document.getElementById("log");
+
+    if(logIndex < logs.length){
+        logBox.innerHTML += "> " + logs[logIndex] + "<br>";
+        logIndex++;
+    }
+}
+
+setInterval(addLog, 3000);
+
+</script>
+
+</body>
+</html>
